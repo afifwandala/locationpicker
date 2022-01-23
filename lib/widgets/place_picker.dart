@@ -409,9 +409,9 @@ class PlacePickerState extends State<PlacePicker> {
   /// to be the road name and the locality.
   void reverseGeocodeLatLng(LatLng latLng) async {
  try {
-  final response = await http.get(
-      "https://maps.googleapis.com/maps/api/geocode/json?" +
-          "latlng=${latLng.latitude},${latLng.longitude}&" +
+  final url = Uri.parse("https://maps.googleapis.com/maps/api/geocode/json?"
+          "latlng=${latLng.latitude},${latLng.longitude}&"
+          "language=${widget.localizationItem.languageCode}&"
           "key=${widget.apiKey}");
 
   if (response.statusCode != 200) {
